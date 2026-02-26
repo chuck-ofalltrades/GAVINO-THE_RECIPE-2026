@@ -1,0 +1,74 @@
+@use "../abstract" as *;
+@use "../base/typography" as *;
+
+.newsletter {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 8rem 0;
+    text-align: center;
+
+    &__wrapper {
+        max-width: 800px;
+        margin: 0 auto;
+        
+        h2 {
+            font-family: $font-secondary;
+            color: #ffffff;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #f2f2f2;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            padding: 0 1rem;
+        }
+    }
+
+    &__form {
+        display: flex;
+        max-width: 600px;
+        margin: 0 auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+        input {
+            flex-grow: 1;
+            padding: 1.2rem 1.5rem;
+            border: none;
+            outline: none;
+            font-family: $font-primary;
+            font-size: 1rem;
+            color: $clr--dark;
+            
+            &::placeholder { color: #a0a0a0; }
+        }
+
+        button {
+            background-color: $clr--primary;
+            color: #ffffff;
+            border: none;
+            padding: 0 2.5rem;
+            font-family: $font-primary;
+            font-weight: 700;
+            text-transform: capitalize;
+            cursor: pointer;
+            transition: 0.3s ease;
+
+            &:hover { filter: brightness(1.1); }
+        }
+
+        @include mediaQuery(500px) {
+            flex-direction: column;
+            box-shadow: none;
+
+            input, button {
+                width: 100%;
+                padding: 1.2rem;
+            }
+            button { margin-top: 1rem; }
+        }
+    }
+}

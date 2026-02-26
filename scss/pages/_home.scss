@@ -1,0 +1,138 @@
+@use "../abstract" as *;
+@use "../base/typography" as *;
+
+// --- HERO BANNER ---
+.homeBanner {
+    background-color: $clr--secondary;
+    padding: 6rem 0;
+
+    &__wrapper {
+        @include gridFixed(2, 4rem);
+        align-items: center;
+
+        @include mediaQuery(768px) {
+            @include gridFixed(1, 3rem);
+        }
+    }
+
+    &__left {
+        padding-right: 2rem;
+
+        small {
+            color: $clr--primary;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-family: $font-secondary;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        p {
+            color: $clr--light;
+            margin-bottom: 2.5rem;
+            max-width: 95%;
+            font-size: 1.1rem;
+        }
+    }
+
+    &__right img {
+        @include imgFit(100%, 480px);
+        border-radius: 2px;
+    }
+}
+
+// --- RECIPE OF THE WEEK WRAPPER ---
+.recipeWeek {
+    padding: 6rem 0 3rem 0;
+
+    &__grid {
+        @include gridFixed(4, 2rem);
+
+        @include mediaQuery(992px) { @include gridFixed(2, 2rem); }
+        @include mediaQuery(500px) { @include gridFixed(1, 2rem); }
+    }
+}
+
+// --- RECIPE COLLECTION (Alternating Rows) ---
+.recipeCollection {
+    padding: 4rem 0 6rem 0;
+
+    .collectionRow {
+        @include gridFixed(2, 6rem);
+        align-items: center;
+        margin-bottom: 7rem;
+
+        &:last-child { margin-bottom: 0; }
+
+        &__img img {
+            @include imgFit(100%, 450px);
+            border-radius: 2px;
+        }
+
+        &__text {
+            small {
+                color: $clr--primary;
+                font-weight: 800;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                font-size: 0.85rem;
+            }
+
+            h3 {
+                font-family: $font-secondary;
+                margin: 1.2rem 0 1.5rem;
+                font-size: clamp(1.8rem, 3vw, 2.5rem);
+                line-height: 1.2;
+            }
+
+            p {
+                margin-bottom: 2.5rem;
+                color: $clr--light;
+                font-size: 1.05rem;
+                line-height: 1.6;
+            }
+        }
+
+        &.row--reverse {
+            direction: rtl;
+            .collectionRow__text { direction: ltr; }
+        }
+
+        @include mediaQuery(768px) {
+            @include gridFixed(1, 3rem);
+            margin-bottom: 5rem;
+            &.row--reverse { direction: ltr; }
+        }
+    }
+}
+
+// --- CLASSIC GRID WRAPPER ---
+.classic__grid {
+    @include gridFixed(3, 4rem 2rem); 
+
+    @include mediaQuery(992px) { @include gridFixed(2, 2rem); }
+    @include mediaQuery(600px) { @include gridFixed(1, 1.5rem); }
+}
+
+// --- BUTTON COMPONENT ---
+.btn--primary {
+    display: inline-block;
+    background-color: $clr--primary;
+    color: white;
+    padding: 1rem 2.2rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    &:hover { background-color: darken(#D9964A, 10%); }
+}

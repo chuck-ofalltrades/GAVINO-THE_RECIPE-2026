@@ -1,0 +1,45 @@
+@use "../abstract" as *;
+@use "../base/typography" as *;
+
+.header {
+  padding: 1.5rem 0;
+  background-color: #ffffff;
+
+  &__wrapper {
+    @include between; 
+  }
+
+  &__logo {
+    a {
+      h4 {
+        font-family: $font-primary;
+        color: $clr--dark;
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+    }
+  }
+
+  &__nav {
+    ul {
+      display: flex;
+      gap: 2.5rem;
+
+      li {
+        a {
+          font-family: $font-primary;
+          color: $clr--light;
+          font-size: 1rem;
+          font-weight: 400;
+          text-transform: capitalize;
+          transition: 0.3s ease;
+
+          &:hover {
+            color: $clr--primary;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+@use "../abstract" as *;
+@use "../base/typography" as *;
+
+.footer {
+    padding: 6rem 0;
+    // Removed the top border, it's not in the design!
+    background-color: $clr--secondary; // Changed to match the tan hero background
+
+    &__wrapper {
+        @include centerAll;
+        flex-direction: column;
+        gap: 1.5rem; // Tightened the gap slightly
+
+        h4 {
+            font-family: $font-primary;
+            color: $clr--dark;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+
+            a {
+                font-family: $font-primary;
+                color: $clr--light;
+                font-size: 0.95rem;
+                font-weight: 400;
+                text-transform: capitalize;
+                transition: 0.3s ease;
+
+                &:hover { color: $clr--primary; }
+            }
+        }
+
+        p {
+            color: $clr--light; // Switched to match your light grey variable
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+    }
+
+    @include mediaQuery(768px) {
+        padding: 4rem 0;
+        &__wrapper nav { gap: 1.5rem; }
+    }
+}

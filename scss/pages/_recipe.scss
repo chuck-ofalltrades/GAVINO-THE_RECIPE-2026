@@ -1,0 +1,244 @@
+@use "../abstract" as *;
+@use "../base/typography" as *;
+
+.recipeDetail {
+    position: relative;
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+
+    // The trick for the top tan background
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 35rem; // Adjust this to match exactly where the color stops behind the image
+        background-color: $clr--secondary;
+        z-index: -1;
+    }
+
+    // --- HEADER META ---
+    &__header {
+        margin-bottom: 3rem;
+
+        .title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 2rem;
+
+            h2 {
+                font-family: $font-secondary;
+                color: $clr--dark;
+                font-size: clamp(2rem, 4vw, 3rem);
+                line-height: 1.2;
+            }
+
+            .publish-date {
+                color: $clr--light;
+                font-size: 0.9rem;
+            }
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-top: 1px solid #dcdcdc;
+            border-bottom: 1px solid #dcdcdc;
+
+            p {
+                color: $clr--light;
+                font-size: 0.95rem;
+
+                strong {
+                    color: $clr--dark;
+                    font-weight: 700;
+                    margin-right: 0.5rem;
+                }
+            }
+        }
+
+        @include mediaQuery(768px) {
+            .title-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .meta-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    }
+
+    // --- 2-COLUMN GRID ---
+    &__grid {
+        @include gridCustom(2fr 1fr, 4rem);
+
+        @include mediaQuery(992px) {
+            @include gridFixed(1, 4rem);
+        }
+    }
+
+    // --- LEFT COLUMN ---
+    &__main {
+        .main-image {
+            width: 100%;
+            border-radius: 2px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .directions {
+            margin-bottom: 3rem;
+
+            .step {
+                margin-bottom: 2.5rem;
+
+                h4 {
+                    color: $clr--light;
+                    font-family: $font-primary;
+                    margin-bottom: 1rem;
+                    font-size: 1.1rem;
+                }
+
+                p {
+                    color: $clr--dark;
+                    font-size: 1rem;
+                    line-height: 1.8;
+                }
+            }
+        }
+
+        .recipe-pagination {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #dcdcdc;
+            border-bottom: 1px solid #dcdcdc;
+            padding: 2rem 0;
+            margin-bottom: 4rem;
+
+            a {
+                color: $clr--light;
+                font-weight: 700;
+                font-size: 0.85rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                transition: 0.3s ease;
+
+                &:hover {
+                    color: $clr--primary;
+                }
+            }
+        }
+
+        .video-section {
+            h2 {
+                font-family: $font-secondary;
+                color: $clr--primary;
+                margin-bottom: 1.5rem;
+            }
+
+            .video-wrapper {
+                position: relative;
+                padding-bottom: 56.25%; // 16:9 Aspect Ratio trick for responsive iframes
+                height: 0;
+                overflow: hidden;
+
+                iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 2px;
+                }
+            }
+        }
+    }
+
+    // --- RIGHT COLUMN ---
+    &__sidebar {
+        
+        .ingredients-card {
+            background-color: $clr--primary;
+            padding: 2.5rem;
+            border-radius: 2px;
+            margin-bottom: 3rem;
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+            h3 {
+                font-family: $font-secondary;
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            ul {
+                list-style: none;
+
+                li {
+                    margin-bottom: 1rem;
+                    font-size: 0.95rem;
+                    line-height: 1.5;
+                    padding-bottom: 1rem;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+                    &:last-child {
+                        margin-bottom: 0;
+                        padding-bottom: 0;
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+
+        .tags-block {
+            margin-bottom: 3rem;
+
+            .tag-row {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap; // Allows tags to wrap on small screens
+                gap: 0.8rem;
+                margin-bottom: 1rem;
+
+                span {
+                    color: $clr--light;
+                    font-size: 0.85rem;
+                    margin-right: 0.5rem;
+                }
+
+                .tag {
+                    background-color: #e0e0e0;
+                    color: $clr--dark;
+                    padding: 0.3rem 1rem;
+                    border-radius: 20px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    transition: 0.3s ease;
+
+                    &:hover {
+                        background-color: $clr--primary;
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+
+        .sidebar__items {
+            h3 {
+                font-family: $font-secondary;
+                color: $clr--primary;
+                margin-bottom: 2rem;
+                font-size: 1.5rem;
+            }
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+    }
+}

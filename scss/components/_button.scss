@@ -1,0 +1,24 @@
+@use "../abstract" as *;
+@use "../base/typography" as *;
+
+.btn--primary {
+    display: inline-block;
+    background-color: $clr--primary;
+    color: #ffffff;
+    padding: 0.8rem 2.2rem;
+    font-family: $font-primary; // Mulish
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 2px; // Just a tiny softening of the edges to match the images
+
+    &:hover {
+        filter: brightness(0.9); // Creates a smooth, slightly darker hover effect
+    }
+    
+    &:active {
+        transform: translateY(2px); // Gives a nice little "click" press effect
+    }
+}

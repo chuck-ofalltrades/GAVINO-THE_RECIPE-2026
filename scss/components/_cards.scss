@@ -1,0 +1,100 @@
+@use "../abstract" as *;
+@use "../base/typography" as *;
+
+.recipeCard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &__img {
+        margin-bottom: 1.5rem;
+        width: 100%;
+
+        img {
+            width: 100%;
+            aspect-ratio: 3 / 4; // Move this directly to the img tag!
+            object-fit: cover;
+            border-radius: 2px;
+            display: block; // This removes any weird invisible spacing below images
+        }
+    }
+    
+    // ... rest of your __content styles stay exactly the same ...
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1; // Allows the text area to stretch so cards match heights
+
+        small {
+            color: $clr--primary;
+            font-weight: 800;
+            letter-spacing: 4px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        h4 {
+            font-family: $font-secondary;
+            margin: 0 0 1rem 0;
+            line-height: 1.3;
+            color: $clr--dark;
+            font-size: 1.15rem;
+            text-align: center;
+        }
+
+        p {
+            color: $clr--light;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            text-align: left;
+        }
+    }
+}
+
+.classicItem {
+    @include gridCustom(80px 1fr, 1.5rem); 
+    align-items: center;
+
+    img {
+        @include imgFit(80px, 80px);
+        border-radius: 2px; 
+    }
+
+    &__details {
+        small {
+            color: $clr--primary;
+            font-weight: 800;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        h5 {
+            font-family: $font-secondary;
+            margin: 0.2rem 0;
+            color: $clr--dark;
+            font-size: 1.15rem;
+        }
+
+        .stars {
+            color: $clr--primary;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.3rem; 
+        }
+
+        .get-recipe {
+            display: block;
+            color: $clr--light;
+            font-size: 0.75rem;
+        }
+    }
+
+    @include mediaQuery(500px) {
+        @include gridCustom(60px 1fr, 1rem);
+        img { @include imgFit(60px, 60px); }
+    }
+}
